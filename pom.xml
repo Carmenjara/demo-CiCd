@@ -10,14 +10,33 @@
 	</parent>
 	<groupId>com.tallermicroservicios</groupId>
 	<artifactId>demo-CiCd</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo-CiCd</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        
+        
+        <docker.image.prefix>bdportilla1</docker.image.prefix>
+        <maven.deploy.skip>true</maven.deploy.skip>
+        
+        
+        <github.global.server>github</github.global.server>
+        <github.global.oauth2Token>${env.GITHUB_OAUTH_TOKEN}</github.global.oauth2Token>
+        
+        <full-artifact-name>target/${project.artifactId}-${project.version}.jar</full-artifact-name>
+        
 	</properties>
+	
+	
 
+
+
+		
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -35,6 +54,9 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		
+		
 	</dependencies>
 
 	<build>
@@ -43,7 +65,80 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			
+			<plugin>
+	            <groupId>com.spotify</groupId>
+	            <artifactId>dockerfile-maven-plugin</artifactId>
+	            <version>1.4.9</version>
+	            <executions>
+					<execution>
+						<id>default</id>
+						<phase>install</phase>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+	            <configuration>
+	                <repository>${docker.image.prefix}/${project.artifactId}</repository>
+			
+	                <serverId>index.docker.io</serverId>
+	      		<registryUrl>https://index.docker.io:443/v1/</registryUrl>
+	            </configuration>
+        	</plugin>
+        	
 		</plugins>
+	
 	</build>
+	
+	
+	<reporting>
+  
+  		<plugins>
+  		
+  			<plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-project-info-reports-plugin</artifactId>
+	            <version>3.0.0</version>
+	            <reportSets>
+	                <reportSet>
+	                    <reports>
+	                        <report>index</report>
+	                        <report>licenses</report>
+	                        <report>dependency-info</report>
+	                        <report>ci-management</report>
+	                        <report>dependencies</report>
+	                        <report>dependency-convergence</report>
+	                        <report>dependency-management</report>
+	                        <report>distribution-management</report>
+	                        <report>help</report>
+	                        <report>issue-management</report>
+	                        <report>mailing-lists</report>
+	                        <report>modules</report>
+	                        <report>plugin-management</report>
+	                        <report>plugins</report>
+	                        <report>team</report>
+	                        <report>scm</report>
+	                        <report>summary</report>
+	                        
+	                        
+	                    </reports>
+	                </reportSet>
+	            </reportSets>
+	        </plugin>
+			
+	       <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-javadoc-plugin</artifactId>
+		        <version>3.1.1</version>
+		        
+              </plugin>
+
+  		
+  		</plugins>
+  
+  </reporting>
 
 </project>
