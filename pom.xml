@@ -75,6 +75,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<finalName>docker-spring-boot</finalName>
 			</plugin>
 			
 			<!-- spotify's dockerfile-maven-plugin -->
