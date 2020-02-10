@@ -28,7 +28,7 @@
         <github.global.server>github</github.global.server>
         <github.global.oauth2Token>${env.GITHUB_OAUTH_TOKEN}</github.global.oauth2Token>
         
-        <full-artifact-name>target/${project.artifactId}-${project.version}.jar</full-artifact-name>
+        
         
 	</properties>
 	
