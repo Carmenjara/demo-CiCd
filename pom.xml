@@ -19,13 +19,19 @@
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        
-        
-        <docker.image.prefix>bdportilla1</docker.image.prefix>
-        <maven.deploy.skip>true</maven.deploy.skip>
-        
-        
-        <github.global.server>github</github.global.server>
+		
+		<!-- property useful for  spotify's dockerfile-maven-plugin -->
+		
+		<!-- Instead of "fanjups", please add your Docker Hub username -->
+		
+		<docker.image.prefix>bdportilla1</docker.image.prefix>
+		
+		<!--Not adding artifacts to remote repository-->
+		
+		<maven.deploy.skip>true</maven.deploy.skip>
+		
+		<!-- GitHub OAuth token & server -->
+		<github.global.server>github</github.global.server>
         <github.global.oauth2Token>${env.GITHUB_OAUTH_TOKEN}</github.global.oauth2Token>
         
         
@@ -110,8 +116,6 @@
 			                </artifactItems>
 			            </configuration>
 			        </execution>
-				
-	 
 			    </executions>
 		    
        		</plugin>
