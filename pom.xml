@@ -119,38 +119,5 @@
 		</plugins>
 	</build>
 	
-	<licenses>
-		<license>
-			<name>MIT License</name>
-			<url>http://www.opensource.org/licenses/mit-license.php</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-  
-  <developers>
-  	<developer>
-  		<email>bryantporti@gmail.com</email>
-		<name>Bryant Portilla</name>
-		<url>https://github.com/bdportilla1</url>
-		<id>bdportilla1</id>
-  	</developer>
-      
-  </developers>
-  
-  <organization>
-		<name>Bryant Porti Fans</name>
-		<url>https://github.com/bdportilla1/</url>
-	</organization>
-  
-  <issueManagement>
-		<system>GitHub Issues</system>
-		<url>https://github.com/bdportilla1/demo-CiCd/issues</url>
-  </issueManagement>
-  
-  <scm>
-		<url>https://github.com/bdportilla1/demo-CiCd</url>
-		<connection>scm:git:git://github.com/bdportilla/demo-CiCd.git</connection>
-		<developerConnection>scm:git:git://github.com/bdportilla1/demo-CiCd.git</developerConnection>
-  </scm>
 
 </project>
