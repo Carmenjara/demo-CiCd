@@ -11,7 +11,7 @@ public class DemoCiCdApplication {
 	
 	@GetMapping("/")
 	public String home() {
-		return "Hola";
+		return "Hola mijin";
 		
 	}
 
