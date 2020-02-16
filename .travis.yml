@@ -27,7 +27,7 @@ cache:
 after_success:
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH; fi`
-- export IMAGE_NAME=bdportilla1/demo-CiCd
+- export IMAGE_NAME=bdportilla1/demo-cicd
 - docker build -t $IMAGE_NAME:$COMMIT .
 - docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
 - docker push $IMAGE_NAME
