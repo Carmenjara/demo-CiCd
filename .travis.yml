@@ -1,31 +1,38 @@
-#we use java
+sudo: required
 language: java
+jdk: openjdk8
 
-#we add the java development kit (jdk)
-jdk:
-- openjdk8
 services:
-#Linking Travis CI and Docker
-- docker
-
-#script: ./mvnw clean install
-#root: linux
-#install:
- # - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-
-#jobs:
- # include:
- #   - stage: Test
-#      script: mvn test
-
+  - docker
+  
+env:
+  global: 
+  - secure: "DOCKER_USERNAME"
+  - secure: "DOCKER_PASSWORD"
+  - secure: "HEROKU_API_KEY"
+  - COMMIT=${TRAVIS_COMMIT::7}
+  
+      
 before_install:
-- mvn clean
-- echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
-- docker pull openjdk:8-jdk-alpine
+  - chmod +x mvnw
+ 
+script: 
+  - ./mvnw clean install -B
+  
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+  
 
-script:
-#We avoid thiss error :" the job exceeded the maximum log length and has been terminated "
-- echo -e '<?xml version="1.0" encoding="UTF-8"?>\n<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"\n    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\n  <mirrors>\n    <mirror>\n      <id>mvnsearch-unavailable</id>\n      <name>mvnsearch-unavailable</name>\n      <mirrorOf>mvnsearch</mirrorOf>\n      <url>http://repo1.maven.org/maven2</url>\n    </mirror>\n  </mirrors>\n  <profiles>\n    <profile>\n      <id>no-mvnsearch</id>\n      <repositories>\n        <repository>\n          <id>mvnsearch</id>\n          <url>http://www.mvnsearch.org/maven2</url>\n          <releases>\n            <enabled>true</enabled>\n          </releases>\n          <snapshots>\n            <enabled>true</enabled>\n          </snapshots>\n        </repository>\n      </repositories>\n    </profile>\n  </profiles>\n  <activeProfiles>\n    <activeProfile>no-mvnsearch</activeProfile>\n  </activeProfiles>\n</settings>' > $HOME/.m2/settings.xml
-- cat $HOME/.m2/settings.xml
-#deploying the app on Docker & Heroku
-- mvn heroku:deploy
+after_success:
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH; fi`
+- export IMAGE_NAME=bdportilla1/demo-cicd
+- docker build -t $IMAGE_NAME:$COMMIT .
+- docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
+- docker push $IMAGE_NAME
+
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: app-usuarios-service
