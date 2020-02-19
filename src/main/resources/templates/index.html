@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-
 	<meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -48,11 +45,11 @@
     <div class="principal" id="principal">
         <div class="container">
                 <div id="formulario" class="card card-body mt-5 mb-5" style="width: 60%;">
-                    <form action="/registrarEstacionamiento" method="get">
+                    <form action="/createUser" method="post">
                          <div id="registro">
-                            <h1>Paso 1/6 - Registro de Parqueadero</h1>
+                            <h1 style="text-align: center">Registro de Usuario</h1>
                                 <div class="login-body">
-                                    <h2 style="text-align: center;">Informacion Propietario</h2>
+                                    <h2 style="text-align: center;">Informacion del Beacon</h2>
                                     
                                         <div class="row">
                                             <div class="form-group col">
@@ -67,33 +64,14 @@
                                         
                                         <div class="row">
                                             <div class="form-group col">
-                                                <label for="label_ced">Email:</label>
-                                                <input type="text" name="email" placeholder="Escriba su email" class="form-control" >
-                                            </div>
-                                            <div class="form-group col">
-                                                <label for="label_ced">Telefono:</label>
-                                                <input type="text" name="telefono" placeholder="Escriba su telefono" class="form-control" >
-                                            </div>
-                                        </div>
-                                        
-                                        
-                                        <div class="form-group">
-                                            <label for="label_ced">Direccion:</label>
-                                            <input type="text" name="direccion" placeholder="Escriba su direccion" class="form-control" >
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group col">
                                                 <label for="label_ced">Login:</label>
-                                                <input type="text" name="login" placeholder="Escriba su login" class="form-control" >
+                                                <input type="text" name="usuario" placeholder="Escriba su login" class="form-control" >
                                             </div>
-                                            <div class="form-group col">
-                                                <label for="label_ced">Password:</label>
-                                                <input type="password" name="pass" placeholder="Escriba su pass" class="form-control" >
-                                            </div>
+                                            
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <button type="button" class="btn btn-success btn-block mt-4" onclick="sigPro()">Siguiente</button>
+                                                <button type="submit" class="btn btn-success btn-block mt-4" onclick="sigPro()">Registrar</button>
                                             </div>
                                         </div>
                                 </div>
@@ -141,7 +119,6 @@
         <hr class="deep-purple accent-2 mt-0 d-inline-block mx-auto" style="width: 60px;">
 
         <p>
-          <i class="fas fa-envelope mr-3"></i> japortilla1810@gmail.com.com
           <i class="fas fa-envelope mr-3"></i> bryantporti@gmail.com</p>
         
          
@@ -150,8 +127,8 @@
     </div>
     <!-- Grid row -->
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">2019 UTPL - Arquitectura de Aplicaciones:
-      <a href="https://www.edina.com.ec/4137/11/890/ecolac/productos-lacteos">Prueba Parqueadero</a>
+    <div class="footer-copyright text-center py-3">2019 UTPL - Dev-Ops:
+      <a href="https://www.edina.com.ec/4137/11/890/ecolac/productos-lacteos">Taller Arquitectura</a>
     </div>
     <!-- Copyright -->
 

@@ -11,6 +11,19 @@ public class Usuarios {
 	public Usuarios() {
 		super();
 	}
+	
+	
+	
+
+	public Usuarios(String nombre, String apellido, String usuario) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.usuario = usuario;
+	}
+
+
+
 
 	public String getNombre() {
 		return nombre;
