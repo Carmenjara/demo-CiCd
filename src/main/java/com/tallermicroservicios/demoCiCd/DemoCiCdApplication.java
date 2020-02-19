@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoCiCdApplication {
 	
-	@GetMapping("/")
-	public String home() {
-		return "FIREBASE";	
+	@RequestMapping("/")
+	public String home(Model model) {
+		return "index";	
 	}
 	
 	@RequestMapping("/registro")
 	public String registro(Model model) {
 		return "index";
-		
 	}
+	
 	
 	@GetMapping("/principal")
 	public String hola(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
