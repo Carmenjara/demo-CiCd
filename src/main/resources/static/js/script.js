@@ -1,6 +1,8 @@
 $( document ).ready(function() {
 
-	alert("Hola mijin");
-    
 
 });
+
+function sig() {
+	
+}
