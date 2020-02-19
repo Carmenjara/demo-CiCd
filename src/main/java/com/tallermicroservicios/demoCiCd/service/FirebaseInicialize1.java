@@ -13,7 +13,7 @@ import com.google.firebase.FirebaseOptions;
 
 
 @Service
-public class FirebaseInicialize {
+public class FirebaseInicialize1 {
 	
 	@PostConstruct
 	public void initialize() throws IOException {
