@@ -11,9 +11,9 @@ public class DemoCiCdApplication {
 	
 	@GetMapping("/")
 	public String home() {
-		return "Hola mijin sin deploy jajaja";
-		
+		return "FIREBASE";	
 	}
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoCiCdApplication.class, args);
